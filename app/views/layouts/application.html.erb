@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers1</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="container-fluid" style="background-color: black;">
+    <nav class="nav navbar-nav navbar-left">
+
+    <h4 class="bookers1">Bookers</h4>
+  </nav>
+  <nav class="aicon">
+     <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      
+      <li class="headerhomes" ><span class="glyphicon glyphicon-home" aria-hidden="true">
+        <%= link_to 'Home',user_path(current_user), data: {"turbolinks" => false} %></span>
+      </li>
+      <li class="headerusers"><span class="glyphicon glyphicon-user" aria-hidden="true">
+        <%= link_to 'Users',users_path, data: {"turbolinks" => false} %></span>
+      </li>
+      <li class="headerbooks"><span class="glyphicon glyphicon-book" aria-hidden="true">
+        <%= link_to "Books", books_path, data: {"turbolinks" => false} %></span>
+      </li>
+      <li class="headerlogout"><span class="glyphicon glyphicon-share" aria-hidden="true">
+        <%= link_to "logout", destroy_user_session_path, method: :delete %></span>
+      </li>
+      
+      
+
+    <% else %>
+    <li class="headerhome"><span class="glyphicon glyphicon-home" aria-hidden="true">
+        <%= link_to "Home", root_path %></span>
+      </li>
+      <li class="headerabout"><span class="glyphicon glyphicon-flag" aria-hidden="true">
+        <%= link_to "About", home_about_path %></span>
+      </li>
+       <li class="headersignup"><span class="glyphicon glyphicon-edit" aria-hidden="true">
+        <%= link_to "sign up", new_user_registration_path %></span>
+      </li>
+        <li class="headerlogin"><span class="glyphicon glyphicon-log-out" aria-hidden="true">
+        <%= link_to "login", new_user_session_path %></span>
+      </li>
+    <% end %>
+
+  </ul>
+</nav>
+
+</div>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

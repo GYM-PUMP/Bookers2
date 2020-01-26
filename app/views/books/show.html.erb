@@ -1,0 +1,38 @@
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+
+<%= render "layouts/list", book: Book.new, user: @book.user %>
+</div>
+<div class="col-md-9">
+<div class="Book detail">
+<h1>Book detail</h1>
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %><br><%= link_to @book.user.name, user_path(@book.user_id) %></td>
+    <td><%= link_to @book.title, book_path %></td>
+    <td><%= @book.body %></td>
+
+    <td><% if @book.user == current_user %><%= link_to "Edit", edit_book_path, class: "btn-sm btn-success" %>
+      <% end %>
+    </td>
+
+    <td><% if @book.user == current_user %><%= link_to "Destroy", book_path(@book),class: "btn-sm btn-danger", method: :delete, data: { confirm: '本当に消しますか？' } %>
+      <% end %>
+      </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
