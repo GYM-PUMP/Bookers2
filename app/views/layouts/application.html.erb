@@ -19,7 +19,6 @@
   <nav class="aicon">
      <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      
       <li class="headerhomes" ><span class="glyphicon glyphicon-home" aria-hidden="true">
         <%= link_to 'Home',user_path(current_user), data: {"turbolinks" => false} %></span>
       </li>
@@ -32,8 +31,7 @@
       <li class="headerlogout"><span class="glyphicon glyphicon-share" aria-hidden="true">
         <%= link_to "logout", destroy_user_session_path, method: :delete %></span>
       </li>
-      
-      
+
 
     <% else %>
     <li class="headerhome"><span class="glyphicon glyphicon-home" aria-hidden="true">
